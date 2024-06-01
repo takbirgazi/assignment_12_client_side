@@ -29,3 +29,4 @@
 
 * react-helmet-async
 * rop-types
+* responsive-carousel
