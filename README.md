@@ -30,3 +30,4 @@
 * react-helmet-async
 * rop-types
 * responsive-carousel
+* react-parallax
