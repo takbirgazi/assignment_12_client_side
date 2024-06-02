@@ -18,7 +18,7 @@ const BannerSlide = () => {
                         <h3 className="text-left font-bold text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, numquam.</h3>
                         <p className="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt minima eos beatae totam possimus iste eum at dolorem accusamus! Recusandae nam, harum qui repellat ullam obcaecati doloribus laborum ea voluptatum.</p>
                         <div className="flex items-center justify-center">
-                            <button className="btn btn-outline btn-primary my-10">All Test</button>
+                            <button className="btn btn-outline text-white my-10">All Test</button>
                         </div>
                     </div>
                 </div>

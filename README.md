@@ -31,3 +31,6 @@
 * rop-types
 * responsive-carousel
 * react-parallax
+* react-icons
+* react-simple-captcha
+* react-hot-toast
