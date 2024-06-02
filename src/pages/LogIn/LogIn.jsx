@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 // import useAuth from "../../hooks/useAuth";
 
-const SignUp = () => {
+const LogIn = () => {
 
     const captchaRef = useRef(null);
     const [disable, setDisable] = useState(true);
@@ -92,12 +92,6 @@ const SignUp = () => {
                                 <span className="text-red-500">{errorText}</span>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Name</span>
-                                    </label>
-                                    <input type="text" name="name" placeholder="name" className="input input-bordered" required />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
                                     <input type="email" name="email" placeholder="email" className="input input-bordered" required />
@@ -128,11 +122,11 @@ const SignUp = () => {
                                     </div>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" name="submit" disabled={disable} className="btn btn-primary" value="Register" />
+                                    <input type="submit" name="submit" disabled={disable} className="btn btn-primary" value="Log In" />
                                 </div>
                             </form>
                             <div>
-                                <div className="text-center text-yellow-600">Already registered? <NavLink to="/login" className="cursor-pointer font-bold underline">Go to log in</NavLink></div>
+                                <div className="text-center text-yellow-600">I want to create an account? <NavLink to="/signUp" className="cursor-pointer font-bold underline">Go to Register</NavLink></div>
                                 <div className="text-center my-4">Or sign up with</div>
                                 <div className="flex gap-5 justify-center items-center mb-10">
                                     <div onClick={googleHndler} className="border flex items-center rounded-full bg-blue-500 cursor-pointer">
@@ -151,4 +145,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default LogIn;

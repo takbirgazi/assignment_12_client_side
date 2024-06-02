@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import { PropTypes } from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 
@@ -11,7 +10,6 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const axiousPublic = useAxiosPublic();
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -33,27 +31,14 @@ const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUSer) => {
+        const unsubscribe = onAuthStateChanged(currentUSer => {
             setUser(currentUSer);
-            if (currentUSer) {
-                const userEmail = { email: currentUSer.email }
-
-                axiousPublic.post('/jwt', userEmail)
-                    .then(res => {
-                        if (res.data) {
-                            localStorage.setItem('access-token', res.data)
-                        }
-                    })
-
-            } else {
-                localStorage.removeItem('access-token');
-            }
             setLoading(false);
         })
         return () => {
             return unsubscribe();
         }
-    }, [axiousPublic])
+    }, [])
 
     const authInfo = {
         user,

@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import TestsCard from "./TestsCard/TestsCard";
 import { Parallax, } from 'react-parallax';
 import promBg from "../../assets/images/banner.jpg";
+import Testimonials from "./Testimonials/Testimonials";
 
 
 const Home = () => {
@@ -38,6 +39,9 @@ const Home = () => {
                             <button className="btn btn-outline text-white my-5">Explore a tests</button>
                         </div>
                     </Parallax>
+                </div>
+                <div>
+                    <Testimonials></Testimonials>
                 </div>
             </div>
         </div>

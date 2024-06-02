@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    const user = true;
+    const user = false;
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/menu'>Our Menu</NavLink></li>
