@@ -12,7 +12,7 @@ const TopFooter = () => {
             </div>
             <div className="flex flex-col justify-center items-center w-1/2 bg-[#111827] text-white text-center">
                 <nav>
-                    <h6 className="footer-title text-xl">Follow US</h6> 
+                    <h6 className="footer-title text-xl">Follow US</h6>
                     <p>Join us on social media</p>
                     <div className="flex justify-center items-center">
                         <div className="grid grid-flow-col gap-4 my-3">

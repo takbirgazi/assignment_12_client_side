@@ -8,22 +8,22 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const axiousPublic = useAxiosPublic();
 
-    const createUser = (email, password)=>{
+    const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-    const upadteUser = (name)=>{
+    const upadteUser = (name) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
-            displayName:name
+            displayName: name
         })
     }
-    const login =(email, password)=>{
+    const login = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
@@ -32,28 +32,28 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUSer)=>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUSer) => {
             setUser(currentUSer);
             if (currentUSer) {
                 const userEmail = { email: currentUSer.email }
-                
+
                 axiousPublic.post('/jwt', userEmail)
                     .then(res => {
                         if (res.data) {
                             localStorage.setItem('access-token', res.data)
                         }
                     })
-                
+
             } else {
                 localStorage.removeItem('access-token');
             }
             setLoading(false);
         })
-        return ()=>{
+        return () => {
             return unsubscribe();
         }
-    },[axiousPublic])
+    }, [axiousPublic])
 
     const authInfo = {
         user,
