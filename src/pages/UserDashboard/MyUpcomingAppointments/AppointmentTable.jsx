@@ -21,7 +21,7 @@ const AppointmentTable = ({allAppointment}) => {
               }
             </tbody>
             
-          </table>
+          </table> 
         </div>
        </div>
     );
