@@ -11,7 +11,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 import Rating from '@mui/material/Rating';
 
 
-const Testimonials = () => {
+const Recommendations = () => {
     const [review, setReview] = useState([]);
     useEffect(()=>{
         // fetch(`${import.meta.env.VITE_API}/reviews`)
@@ -40,4 +40,4 @@ const Testimonials = () => {
     );
 };
 
-export default Testimonials;
+export default Recommendations;

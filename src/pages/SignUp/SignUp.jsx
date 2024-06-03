@@ -5,16 +5,16 @@ import sidebar from "../../assets/images/signupImage.png"
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
-// import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
+
 
 const SignUp = () => {
-
     const captchaRef = useRef(null);
     const [disable, setDisable] = useState(true);
     const [showPass, setShowPass] = useState(false);
     const [errorText, setErrorText] = useState('')
     const navigate = useNavigate();
-    // const { createUser, updateUser, googleSign } = useAuth()
+    const { createUser, upadteUser } = useAuth();
     const from = location.state?.from.pathname || "/";
 
     useEffect(() => {
@@ -30,16 +30,6 @@ const SignUp = () => {
             setDisable(true);
         }
     }
-    const googleHndler = () => {
-        // googleSign()
-        //     .then(() => {
-        //         toast.success("Log in Successful!");
-        //         navigate(from, { replace: true });
-        //     })
-        //     .catch(() => {
-        //         toast.error("Log in Failed");
-        //     })
-    }
     const signUpHandler = (event) => {
         event.preventDefault();
         setDisable(true)
@@ -50,29 +40,29 @@ const SignUp = () => {
         const password = form.password.value;
         // const addUser = { name, email, password };
         setErrorText('');
-        // if (password.length > 5 && password.length < 13) {
-        //     if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password)) {
-        //         createUser(email, password)
-        //             .then(() => {
-        //                 updateUser(name);
-        //                 form.reset();
-        //                 toast.success("Sign Up Successful!");
-        //                 setTimeout(() => {
-        //                     navigate(from, { replace: true });
-        //                     setDisable(false)
-        //                 }, 1000);
-        //             })
-        //             .catch(err => {
-        //                 const msg = err?.code.split('/')[1] || "Sign Up Failed";
-        //                 toast.error(msg);
-        //                 setErrorText(msg);
-        //             })
-        //     } else {
-        //         setErrorText("Password must have Uppercase Lowercase and Number")
-        //     }
-        // } else {
-        //     setErrorText("Password should be 6 to 12 character");
-        // }
+        if (password.length > 5 && password.length < 13) {
+            if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password)) {
+                createUser(email, password)
+                    .then(() => {
+                        upadteUser(name);
+                        form.reset();
+                        toast.success("Sign Up Successful!");
+                        setTimeout(() => {
+                            navigate(from, { replace: true });
+                            setDisable(false)
+                        }, 1000);
+                    })
+                    .catch(err => {
+                        const msg = err?.code.split('/')[1] || "Sign Up Failed";
+                        toast.error(msg);
+                        setErrorText(msg);
+                    })
+            } else {
+                setErrorText("Password must have Uppercase Lowercase and Number")
+            }
+        } else {
+            setErrorText("Password should be 6 to 12 character");
+        }
     }
 
     return (
@@ -111,7 +101,7 @@ const SignUp = () => {
                                             showPass ? "text" : "password"
                                         }
                                             name="password" placeholder="password" className="w-full" required />
-                                        <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3">
+                                        <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3 cursor-pointer">
                                             {
                                                 showPass ? <FaEyeSlash /> : <FaEye />
                                             }
@@ -135,7 +125,7 @@ const SignUp = () => {
                                 <div className="text-center text-yellow-600">Already registered? <NavLink to="/login" className="cursor-pointer font-bold underline">Go to log in</NavLink></div>
                                 <div className="text-center my-4">Or sign up with</div>
                                 <div className="flex gap-5 justify-center items-center mb-10">
-                                    <div onClick={googleHndler} className="border flex items-center rounded-full bg-blue-500 cursor-pointer">
+                                    <div className="border flex items-center rounded-full bg-blue-500 cursor-pointer">
                                         <div className="border rounded-full p-3 cursor-pointer flex gap-3 items-center bg-gray-50">
                                             <FaGoogle className="text-xl text-blue-500" />
                                         </div>

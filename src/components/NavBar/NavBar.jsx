@@ -4,8 +4,7 @@ const NavBar = () => {
     const user = false;
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/menu'>Our Menu</NavLink></li>
-        <li><NavLink to='/shop'>Our Shop</NavLink></li>
+        <li><NavLink to='/allTests'>All Tests</NavLink></li>
         {
             user ? <>
                 <button className="px-2 py-1">Log Out</button>
