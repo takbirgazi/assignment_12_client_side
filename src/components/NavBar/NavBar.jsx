@@ -19,7 +19,7 @@ const NavBar = () => {
                     <li><NavLink to='/login'>Log In</NavLink></li>
                 </>
 
-        }
+        } 
     </>
     return (
         <div className="navbar border-b z-10 bg-white bg-opacity-55 px-5">
