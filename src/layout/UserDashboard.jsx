@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
-import NavBar from "../components/NavBar/NavBar";
-import Footer from "../components/Footer/Footer";
 import { Toaster } from "react-hot-toast";
+import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
+import NavBar from "../components/NavBar/NavBar";
 
-const Root = () => {
+const UserDashboard = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
             <NavBar />
@@ -16,4 +16,4 @@ const Root = () => {
     );
 };
 
-export default Root;
+export default UserDashboard;

@@ -1,13 +1,17 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
-    const user = false;
+    const { user, logOut } = useAuth();
     const navList = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allTests'>All Tests</NavLink></li>
         {
             user ? <>
-                <button className="px-2 py-1">Log Out</button>
+                <li><NavLink to='/user/upcomingAppointments'>My Appointments</NavLink></li>
+                <li><NavLink to="/user/testResult">Test Results</NavLink></li>
+                <li><NavLink to="/user/myProfile">My Profile</NavLink></li>
+                <button onClick={()=>logOut()} className="px-2 py-1">Log Out</button>
             </>
                 :
                 <>

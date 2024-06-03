@@ -3,7 +3,7 @@ import Banner from "./Banner/Banner";
 import TestsCard from "./TestsCard/TestsCard";
 import { Parallax, } from 'react-parallax';
 import promBg from "../../assets/images/banner.jpg";
-import Recommendations from "./Testimonials/Recommendations";
+import Recommendations from "./Recommendations/Recommendations";
 
 
 const Home = () => {
