@@ -35,3 +35,4 @@
 * react-simple-captcha
 * react-hot-toast
 * swiper
+* react-loader-spinner

@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import useAuth from "../hooks/useAuth";
 import { ColorRing } from "react-loader-spinner";
 
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
     if (loading) {
@@ -27,8 +27,8 @@ const PrivateRoute = ({ children }) => {
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>
 };
 
-export default PrivateRoute;
+export default AdminRoute;
 
-PrivateRoute.propTypes = {
+AdminRoute.propTypes = {
     children: PropTypes.object,
 }

@@ -8,7 +8,7 @@ import Recommendations from "./Recommendations/Recommendations";
 
 const Home = () => {
     return (
-        <div className="">
+        <div>
             <Helmet>
                 <title>Home - Health Care Diagnostics</title>
             </Helmet>

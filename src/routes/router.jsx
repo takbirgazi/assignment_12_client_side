@@ -18,6 +18,7 @@ import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
 import Reservation from "../pages/AdminDashboard/Reservation/Reservation";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AdminError from "../pages/AdminError/AdminError";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -56,15 +57,15 @@ const router = createBrowserRouter([
       },
       {
         path: "upcomingAppointments",
-        element: <MyUpcomingAppointments></MyUpcomingAppointments>
+        element: <PrivateRoute><MyUpcomingAppointments></MyUpcomingAppointments></PrivateRoute>
       },
       {
         path: "testResult",
-        element: <TestResults></TestResults>
+        element: <PrivateRoute><TestResults></TestResults></PrivateRoute>
       },
       {
         path: "myProfile",
-        element: <MyProfile></MyProfile>
+        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
       }
     ]
   },
