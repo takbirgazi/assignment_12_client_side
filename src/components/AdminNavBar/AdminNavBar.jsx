@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-const NavBar = () => {
+const AdminNavBar = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
     const logOutHandler = () => {
@@ -11,18 +11,18 @@ const NavBar = () => {
             })
     }
     const navList = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/allTests'>All Tests</NavLink></li>
         {
             user ? <>
-                <li><NavLink to='/user/upcomingAppointments'>My Appointments</NavLink></li>
-                <li><NavLink to="/user/testResult">Test Results</NavLink></li>
-                <li><NavLink to="/user/myProfile">My Profile</NavLink></li>
+                <li><NavLink to="/admin/statisticsPage">Statistics</NavLink></li>
+                <li><NavLink to='/admin/addBanner'>Add Banner</NavLink></li>
+                <li><NavLink to="/admin/addTest">Add Test</NavLink></li>
+                <li><NavLink to="/admin/allBanners">All Banners</NavLink></li>
+                <li><NavLink to="/admin/adminAllTests">All Tests</NavLink></li>
+                <li><NavLink to="/admin/reservation">Reservation</NavLink></li>
                 <button onClick={logOutHandler} className="px-2 py-1">Log Out</button>
             </>
                 :
                 <>
-                    <li><NavLink to="/signUp">Sign Up</NavLink></li>
                     <li><NavLink to='/login'>Log In</NavLink></li>
                 </>
 
@@ -50,4 +50,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default AdminNavBar;

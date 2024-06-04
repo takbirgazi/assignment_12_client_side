@@ -17,6 +17,7 @@ import AllTestsAdmin from "../pages/AdminDashboard/AllTestsAdmin/AllTestsAdmin";
 import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
 import Reservation from "../pages/AdminDashboard/Reservation/Reservation";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AdminError from "../pages/AdminError/AdminError";
 
 
 
@@ -55,11 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: "upcomingAppointments",
-        element:<MyUpcomingAppointments></MyUpcomingAppointments>
+        element: <MyUpcomingAppointments></MyUpcomingAppointments>
       },
       {
         path: "testResult",
-        element:<TestResults></TestResults>
+        element: <TestResults></TestResults>
       },
       {
         path: "myProfile",
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
     element: <AdminDashboard></AdminDashboard>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      {
+        path: "/admin/",
+        element: <AdminError></AdminError>
+      },
       {
         path: "statisticsPage",
         element: <StatisticsPage></StatisticsPage>
