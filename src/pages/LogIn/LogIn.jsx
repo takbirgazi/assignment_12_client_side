@@ -58,7 +58,7 @@ const LogIn = () => {
     return (
         <div className={`bg-white min-h-screen flex items-center justify-center`}>
             <Helmet>
-                <title>Log In - Geography Olympiad BD</title>
+                <title>Log In - Health Care Diagnostics</title>
             </Helmet>
             <div className="my-10 w-full">
                 <div className="hero w-11/12 mx-auto border rounded-md shadow-xl bg-opacity-15">

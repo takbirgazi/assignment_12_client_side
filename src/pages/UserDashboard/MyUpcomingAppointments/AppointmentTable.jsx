@@ -4,13 +4,14 @@ import AppointmentTableRow from './AppointmentTableRow';
 const AppointmentTable = ({allAppointment}) => {
     return (
         <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto my-5">
           <table className="table">
            
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Test Name</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
                 <th>Action</th>
               </tr>
             </thead>

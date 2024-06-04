@@ -36,3 +36,6 @@
 * react-hot-toast
 * swiper
 * react-loader-spinner
+* install axios
+* @tanstack/react-query
+* react-hook-form
