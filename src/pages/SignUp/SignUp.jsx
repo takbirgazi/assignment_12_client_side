@@ -14,7 +14,7 @@ const imageBBAPI = `https://api.imgbb.com/1/upload?key=${imageBBAPIKey}`;
 
 const SignUp = () => {
     const { register, handleSubmit } = useForm()
-    
+
     const captchaRef = useRef(null);
     const [disable, setDisable] = useState(true);
     const [showPass, setShowPass] = useState(false);
@@ -50,10 +50,10 @@ const SignUp = () => {
             setDisable(true);
         }
     }
-    const onSubmit = async(data) => {
+    const onSubmit = async (data) => {
         setDisable(true)
         setErrorText('');
-        console.log(data); 
+        console.log(data);
         if (data.password.length > 5 && data.password.length < 13) {
             if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(data.password)) {
                 if (data.password === data.confirmPassword) {
@@ -63,23 +63,23 @@ const SignUp = () => {
                             'Content-Type': 'multipart/form-data'
                         }
                     });
-                   createUser(data.email, data.password)
-                    .then(() => {
-                        upadteUser(data.name);
-                        const addUser = { name:data.name, email:data.email, password:data.password, upazila:data.upazila,profile:res.data.data.display_url, district:data.district, blood:data.blood }
-                        axiosPublic.post("/users", addUser)
-                            .then(res => {
-                                console.log(res);
-                            });
-                        toast.success("Sign Up Successful!");
-                        navigate(from, { replace: true });
-                        setDisable(false)
-                    })
-                    .catch(err => {
-                        const msg = err?.code.split('/')[1] || "Sign Up Failed";
-                        toast.error(msg);
-                        setErrorText(msg);
-                    }) 
+                    createUser(data.email, data.password)
+                        .then(() => {
+                            upadteUser(data.name);
+                            const addUser = { name: data.name, email: data.email, password: data.password, upazila: data.upazila, profile: res.data.data.display_url, district: data.district, blood: data.blood }
+                            axiosPublic.post("/users", addUser)
+                                .then(res => {
+                                    console.log(res);
+                                });
+                            toast.success("Sign Up Successful!");
+                            navigate(from, { replace: true });
+                            setDisable(false)
+                        })
+                        .catch(err => {
+                            const msg = err?.code.split('/')[1] || "Sign Up Failed";
+                            toast.error(msg);
+                            setErrorText(msg);
+                        })
                 } else {
                     setErrorText("Password And Confirm Password Not Match!")
                 }
@@ -119,87 +119,87 @@ const SignUp = () => {
                                         <input type="email" {...register("email")} placeholder="email" className="input input-bordered" required />
                                     </div>
                                 </div>
-                                <div className="flex gap-2 md:flex-row">
+                                <div className="flex gap-2 md:flex-row flex-col">
                                     <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-                                    <div className="input input-bordered flex items-center relative">
-                                        <input type={
-                                            showPass ? "text" : "password"
-                                        }
-                                            {...register("password")} placeholder="password" className="w-full" required />
-                                        <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3 cursor-pointer">
-                                            {
-                                                showPass ? <FaEyeSlash /> : <FaEye />
+                                        <label className="label">
+                                            <span className="label-text">Password</span>
+                                        </label>
+                                        <div className="input input-bordered flex items-center relative">
+                                            <input type={
+                                                showPass ? "text" : "password"
                                             }
+                                                {...register("password")} placeholder="password" className="w-full" required />
+                                            <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3 cursor-pointer">
+                                                {
+                                                    showPass ? <FaEyeSlash /> : <FaEye />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-control w-full md:w-1/2">
+                                        <label className="label">
+                                            <span className="label-text">Confirm Password</span>
+                                        </label>
+                                        <div className="input input-bordered flex items-center relative">
+                                            <input type={
+                                                showPass ? "text" : "password"
+                                            }
+                                                {...register("confirmPassword")} placeholder="Confirm Password" className="w-full" required />
+                                            <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3 cursor-pointer">
+                                                {
+                                                    showPass ? <FaEyeSlash /> : <FaEye />
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">Confirm Password</span>
-                                    </label>
-                                    <div className="input input-bordered flex items-center relative">
-                                        <input type={
-                                            showPass ? "text" : "password"
-                                        }
-                                            {...register("confirmPassword")} placeholder="Confirm Password" className="w-full" required />
-                                        <div onClick={() => setShowPass(!showPass)} name="showHidden" className="absolute right-3 cursor-pointer">
-                                            {
-                                                showPass ? <FaEyeSlash /> : <FaEye />
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <div className="flex gap-2 md:flex-row">
+                                <div className="flex gap-2 md:flex-row flex-col">
                                     <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">District</span>
-                                    </label>
-                                    <select {...register("district", { required: true })} className="select select-bordered">
+                                        <label className="label">
+                                            <span className="label-text">District</span>
+                                        </label>
+                                        <select {...register("district", { required: true })} className="select select-bordered">
                                             <option value="Select District" disabled>Select District</option>
                                             {
-                                                allDistric.map(distic => <option key={distic.id} value={distic.name}>{distic.name}</option> )
+                                                allDistric.map(distic => <option key={distic.id} value={distic.name}>{distic.name}</option>)
                                             }
-                                    </select>
-                                </div>
-                                <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">Upazila</span>
-                                    </label>
-                                    <select {...register("upazila", { required: true })} className="select select-bordered">
-                                        <option value="Select Upazila" disabled>Select Upazila</option>
-                                        {
-                                            allUpazilas.map(upazila => <option key={upazila.id} value={upazila.name}>{upazila.name}</option>)
-                                        }
-                                    </select>
-                                </div>
-                                </div>
-                                <div className="flex gap-2 md:flex-row">
+                                        </select>
+                                    </div>
                                     <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">Blood Group</span>
-                                    </label>
-                                    <select {...register("blood", { required: true })} className="select select-bordered">
-                                        <option required value="Select Blood Group" disabled>Select Blood Group</option>
-                                        <option value="O+">O +</option>
-                                        <option value="O-">O -</option>
-                                        <option value="A+">A +</option>
-                                        <option value="A-">A -</option>
-                                        <option value="B+">B +</option>
-                                        <option value="B-">B -</option>
-                                        <option value="AB+">AB +</option>
-                                        <option value="AB-">AB -</option>
-                                    </select>
+                                        <label className="label">
+                                            <span className="label-text">Upazila</span>
+                                        </label>
+                                        <select {...register("upazila", { required: true })} className="select select-bordered">
+                                            <option value="Select Upazila" disabled>Select Upazila</option>
+                                            {
+                                                allUpazilas.map(upazila => <option key={upazila.id} value={upazila.name}>{upazila.name}</option>)
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className="form-control w-full md:w-1/2">
-                                    <label className="label">
-                                        <span className="label-text">Image</span>
-                                    </label>
-                                     <input {...register("image")} type="file" className="file-input file-input-bordered w-full max-w-xs" /> 
-                                </div>
+                                <div className="flex gap-2 md:flex-row flex-col">
+                                    <div className="form-control w-full md:w-1/2">
+                                        <label className="label">
+                                            <span className="label-text">Blood Group</span>
+                                        </label>
+                                        <select {...register("blood", { required: true })} className="select select-bordered">
+                                            <option required value="Select Blood Group" disabled>Select Blood Group</option>
+                                            <option value="O+">O +</option>
+                                            <option value="O-">O -</option>
+                                            <option value="A+">A +</option>
+                                            <option value="A-">A -</option>
+                                            <option value="B+">B +</option>
+                                            <option value="B-">B -</option>
+                                            <option value="AB+">AB +</option>
+                                            <option value="AB-">AB -</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-control w-full md:w-1/2">
+                                        <label className="label">
+                                            <span className="label-text">Image</span>
+                                        </label>
+                                        <input {...register("image")} type="file" className="file-input file-input-bordered w-full max-w-xs" />
+                                    </div>
                                 </div>
                                 <div className="form-control">
                                     <div className="border rounded-lg mb-2 px-4 py-2 bg-white">
