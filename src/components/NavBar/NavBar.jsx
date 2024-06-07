@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    const isAdmin = true;
     const navigate = useNavigate();
     const logOutHandler = () => {
         logOut()
@@ -15,9 +16,23 @@ const NavBar = () => {
         <li><NavLink to='/allTests'>All Tests</NavLink></li>
         {
             user ? <>
-                <li><NavLink to='/user/upcomingAppointments'>My Appointments</NavLink></li>
-                <li><NavLink to="/user/testResult">Test Results</NavLink></li>
-                <li><NavLink to="/user/myProfile">My Profile</NavLink></li>
+                {
+                    isAdmin ?
+                        <>
+                            <li><NavLink to="/admin/statisticsPage">Statistics</NavLink></li>
+                            <li><NavLink to='/admin/addBanner'>Add Banner</NavLink></li>
+                            <li><NavLink to="/admin/addTest">Add Test</NavLink></li>
+                            <li><NavLink to="/admin/allBanners">All Banners</NavLink></li>
+                            <li><NavLink to="/admin/adminAllTests">All Tests</NavLink></li>
+                            <li><NavLink to="/admin/reservation">Reservation</NavLink></li>
+                        </>
+                        :
+                        <>
+                            <li><NavLink to='/user/upcomingAppointments'>My Appointments</NavLink></li>
+                            <li><NavLink to="/user/testResult">Test Results</NavLink></li>
+                            <li><NavLink to="/user/myProfile">My Profile</NavLink></li>
+                        </>
+                }
                 <button onClick={logOutHandler} className="px-2 py-1">Log Out</button>
             </>
                 :

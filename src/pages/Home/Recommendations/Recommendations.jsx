@@ -14,8 +14,7 @@ import Rating from '@mui/material/Rating';
 const Recommendations = () => {
     const [review, setReview] = useState([]);
     useEffect(()=>{
-        // fetch(`${import.meta.env.VITE_API}/reviews`)
-        fetch("reviews.json")
+        fetch(`${import.meta.env.VITE_API}/reviews`)
         .then(res => res.json())
         .then(data => setReview(data))
     },[])
