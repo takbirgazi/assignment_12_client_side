@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAuth from '../../../hooks/useAuth';
 
 const imageBBAPIKey = "3926537cff4fb656214110e01e5b9d7b";
 const imageBBAPI = `https://api.imgbb.com/1/upload?key=${imageBBAPIKey}`;
@@ -11,6 +12,7 @@ const AddBanner = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const {user} = useAuth();
 
     const onSubmit = async (data) => { 
         const imageFile = { image: data.image[0] };
@@ -19,7 +21,7 @@ const AddBanner = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        const bannerInfo = { tittle: data.tittle, description: data.description, percentage: data.percentage, coupon: data.coupon, bannerImage: res.data.data.display_url }
+        const bannerInfo = { tittle: data.tittle, description: data.description, percentage: data.percentage, coupon: data.coupon, bannerImage: res.data.data.display_url, isActive:false, adminEmail:user?.email}
         await axiosSecure.post('/addBanner', bannerInfo)
             .then(() => {
                 reset();

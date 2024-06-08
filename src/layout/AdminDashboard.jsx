@@ -1,12 +1,12 @@
 import { Toaster } from "react-hot-toast";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
-import AdminNavBar from "../components/AdminNavBar/AdminNavBar";
+import NavBar from "../components/NavBar/NavBar";
 
 const AdminDashboard = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
-           <AdminNavBar></AdminNavBar>
+           <NavBar></NavBar>
             <div>
                 <Outlet />
             </div>

@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { SlCalender } from "react-icons/sl";
+import useAuth from "../../../hooks/useAuth";
 
 const imageBBAPIKey = "3926537cff4fb656214110e01e5b9d7b";
 const imageBBAPI = `https://api.imgbb.com/1/upload?key=${imageBBAPIKey}`;
@@ -17,6 +18,7 @@ const AddTest = () => {
     const axiosPublic = useAxiosPublic();
     const [testDate, setTestDate] = useState(new Date());
     const addTestDate = testDate.getDate() + "/" + (testDate.getMonth() + 1) + "/" + testDate.getFullYear();
+    const {user} = useAuth();
     
     const onSubmit = async (data) => {
         const imageFile = { image: data.image[0] };
@@ -25,7 +27,7 @@ const AddTest = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        const testInfo = { testName: data.testName, testDetails: data.testDetails, testPrice: data.testPrice, testSlots: data.testSlots, testDate: addTestDate, testImage: res.data.data.display_url }
+        const testInfo = { testName: data.testName, testDetails: data.testDetails, testPrice: data.testPrice, testSlots: data.testSlots, testDate: addTestDate, testImage: res.data.data.display_url,adminEmail:user?.email }
         await axiosSecure.post('/allTests', testInfo)
             .then(() => {
                 reset();
