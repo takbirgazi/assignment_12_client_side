@@ -39,3 +39,4 @@
 * install axios
 * @tanstack/react-query
 * react-hook-form
+* react-datepicker
