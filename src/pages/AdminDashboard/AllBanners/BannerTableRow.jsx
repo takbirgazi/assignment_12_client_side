@@ -2,17 +2,17 @@
 import { PropTypes } from 'prop-types';
 
 const BannerTableRow = ({ bannerInfo }) => {
-    const {bannerImage,tittle, isActive } = bannerInfo;
+    const { bannerImage, tittle, isActive } = bannerInfo;
     return (
         <tr>
             <td>
-                <img className="h-20 border" src={bannerImage} />  
+                <img className="h-20 border" src={bannerImage} />
             </td>
             <td>
                 <h2 className='font-bold'>{tittle}</h2>
             </td>
             <td>
-                {isActive ? "Active": "In Active"}        
+                {isActive ? "Active" : "In Active"}
             </td>
             <th>
                 <button className="btn btn-ghost btn-xs">Delete</button>

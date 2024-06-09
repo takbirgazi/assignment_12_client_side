@@ -6,12 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const { data:allUser=[] } = useQuery({
+    const { data: allUser = [] } = useQuery({
         queryKey: ["users"],
-        queryFn: async() => {
-           const result= await axiosSecure.get("/users") 
+        queryFn: async () => {
+            const result = await axiosSecure.get("/users")
             return result?.data;
-        } 
+        }
     })
 
     return (
@@ -28,23 +28,23 @@ const AllUsers = () => {
                     <div className="overflow-x-auto">
                         <table className="table w-11/12 mx-auto border my-5">
                             <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Blood Group</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Blood Group</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {
-                                    allUser.map(usr=> <UserTableRow key={usr._id} usrInfo={usr}></UserTableRow>)
-                                }                         
+                                    allUser.map(usr => <UserTableRow key={usr._id} usrInfo={usr}></UserTableRow>)
+                                }
                             </tbody>
 
-                            
+
                         </table>
-                        </div>
+                    </div>
 
                 </div>
             </div>

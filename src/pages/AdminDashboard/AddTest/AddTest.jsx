@@ -18,8 +18,8 @@ const AddTest = () => {
     const axiosPublic = useAxiosPublic();
     const [testDate, setTestDate] = useState(new Date());
     const addTestDate = testDate.getDate() + "/" + (testDate.getMonth() + 1) + "/" + testDate.getFullYear();
-    const {user} = useAuth();
-    
+    const { user } = useAuth();
+
     const onSubmit = async (data) => {
         const imageFile = { image: data.image[0] };
         const res = await axiosPublic.post(imageBBAPI, imageFile, {
@@ -27,7 +27,7 @@ const AddTest = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        const testInfo = { testName: data.testName, testDetails: data.testDetails, testPrice: data.testPrice, testSlots: data.testSlots, testDate: addTestDate, testImage: res.data.data.display_url,adminEmail:user?.email }
+        const testInfo = { testName: data.testName, testDetails: data.testDetails, testPrice: data.testPrice, testSlots: data.testSlots, testDate: addTestDate, testImage: res.data.data.display_url, adminEmail: user?.email }
         await axiosSecure.post('/allTests', testInfo)
             .then(() => {
                 reset();

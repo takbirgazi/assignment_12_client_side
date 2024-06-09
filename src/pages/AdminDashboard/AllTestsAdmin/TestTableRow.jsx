@@ -2,20 +2,20 @@
 import { PropTypes } from 'prop-types';
 
 const TestTableRow = ({ testInfo }) => {
-    const {testName, testImage, testSlots, testDate } = testInfo;
+    const { testName, testImage, testSlots, testDate } = testInfo;
     return (
         <tr>
             <td>
-                <img className="h-20 border" src={ testImage} />  
+                <img className="h-20 border" src={testImage} />
             </td>
             <td>
-                <h2 className='font-bold'>{ testName}</h2>
+                <h2 className='font-bold'>{testName}</h2>
             </td>
             <td>
-                {testSlots}        
+                {testSlots}
             </td>
             <td>
-                {testDate}        
+                {testDate}
             </td>
             <th>
                 <button className="btn btn-ghost btn-xs">Update</button>

@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar/NavBar";
 const AdminDashboard = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
-           <NavBar></NavBar>
+            <NavBar></NavBar>
             <div>
                 <Outlet />
             </div>

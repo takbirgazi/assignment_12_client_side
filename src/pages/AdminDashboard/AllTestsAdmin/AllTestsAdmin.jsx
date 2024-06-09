@@ -6,16 +6,16 @@ import TestTableRow from "./TestTableRow";
 
 const AllTestsAdmin = () => {
     const axiosSecure = useAxiosSecure();
-    const { data:allTests=[] } = useQuery({
+    const { data: allTests = [] } = useQuery({
         queryKey: ["test"],
-        queryFn: async() => {
-           const result= await axiosSecure.get("/allTests") 
+        queryFn: async () => {
+            const result = await axiosSecure.get("/allTests")
             return result?.data;
-        } 
+        }
     })
 
     return (
-            <div className={`bg-white min-h-screen flex justify-center`}>
+        <div className={`bg-white min-h-screen flex justify-center`}>
             <Helmet>
                 <title>All Tests - Health Care Diagnostics</title>
             </Helmet>
@@ -28,23 +28,23 @@ const AllTestsAdmin = () => {
                     <div className="overflow-x-auto">
                         <table className="table w-11/12 mx-auto border my-5">
                             <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Test Name</th>
-                                <th>Test Slots</th>
-                                <th>Test Date</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Test Name</th>
+                                    <th>Test Slots</th>
+                                    <th>Test Date</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {
-                                    allTests.map(tst=> <TestTableRow key={tst._id} testInfo={tst}></TestTableRow>)
-                                }                         
+                                    allTests.map(tst => <TestTableRow key={tst._id} testInfo={tst}></TestTableRow>)
+                                }
                             </tbody>
 
-                            
+
                         </table>
-                        </div>
+                    </div>
 
                 </div>
             </div>
