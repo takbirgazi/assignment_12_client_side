@@ -22,7 +22,8 @@ const CardDetails = () => {
             testName: testInfo?.testName,
             userDate: testInfo?.testDate,
             userPrice: testInfo?.testPrice,
-            userEmail: user.email
+            testImg: testInfo?.testImage,
+            email: user.email
         }
         axiosSecure.post("/appointed", appointedData)
             .then(() => {
