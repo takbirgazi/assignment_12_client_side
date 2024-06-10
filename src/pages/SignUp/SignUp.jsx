@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form"
 
-const imageBBAPIKey = "3926537cff4fb656214110e01e5b9d7b";
+const imageBBAPIKey = import.meta.env.VITE_IMAGEBBAPI;
 const imageBBAPI = `https://api.imgbb.com/1/upload?key=${imageBBAPIKey}`;
 
 const SignUp = () => {
