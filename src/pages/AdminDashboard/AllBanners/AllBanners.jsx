@@ -1,17 +1,7 @@
 import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 import BannerTableRow from "./BannerTableRow";
 
 const AllBanners = () => {
-    const axiosSecure = useAxiosSecure();
-    const { data: banner = [] } = useQuery({
-        queryKey: ["banner"],
-        queryFn: async () => {
-            const result = await axiosSecure.get("/addBanner")
-            return result?.data;
-        }
-    })
 
     return (
         <div className={`bg-white min-h-screen flex justify-center`}>
@@ -34,13 +24,7 @@ const AllBanners = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {
-                                    banner.map(bnr => <BannerTableRow key={bnr._id} bannerInfo={bnr}></BannerTableRow>)
-                                }
-                            </tbody>
-
-
+                            <BannerTableRow></BannerTableRow>
                         </table>
                     </div>
 

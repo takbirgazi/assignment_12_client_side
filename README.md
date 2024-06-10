@@ -40,3 +40,4 @@
 * @tanstack/react-query
 * react-hook-form
 * react-datepicker
+* jspdf

@@ -8,7 +8,9 @@ const Banner = () => {
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API}/addBanner`)
         .then(res => res.json())
-        .then(data=> setAllBanner(data))
+            .then(data => {
+                setAllBanner(data.filter(banner=> banner.isActive==true))
+        })
     }, [])
     return (
         <div>

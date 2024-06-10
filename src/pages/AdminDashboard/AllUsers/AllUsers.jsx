@@ -1,18 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import UserTableRow from "./UserTableRow";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 
 
 const AllUsers = () => {
-    const axiosSecure = useAxiosSecure();
-    const { data: allUser = [] } = useQuery({
-        queryKey: ["users"],
-        queryFn: async () => {
-            const result = await axiosSecure.get("/users")
-            return result?.data;
-        }
-    })
 
     return (
         <div className={`bg-white min-h-screen flex justify-center`}>
@@ -36,13 +26,7 @@ const AllUsers = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {
-                                    allUser.map(usr => <UserTableRow key={usr._id} usrInfo={usr}></UserTableRow>)
-                                }
-                            </tbody>
-
-
+                            <UserTableRow></UserTableRow>
                         </table>
                     </div>
 
