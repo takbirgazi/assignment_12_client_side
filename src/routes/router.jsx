@@ -22,6 +22,7 @@ import PrivateRoute from "./PrivateRoute";
 import TearmsAndCondation from "../pages/TearmsAndCondation/TearmsAndCondation";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import CardDetails from "../components/TestsCard/CardDetails";
 
 
 
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "myProfile",
         element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+      },
+      {
+        path: "bookingTest/:id",
+        element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>
       }
     ]
   },
