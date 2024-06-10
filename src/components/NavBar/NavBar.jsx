@@ -1,9 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
-    const isAdmin = true;
+    const isAdmin = useAdmin();
+    const admin = isAdmin[0];
     const navigate = useNavigate();
     const logOutHandler = () => {
         logOut()
@@ -17,7 +19,7 @@ const NavBar = () => {
         {
             user ? <>
                 {
-                    isAdmin ?
+                    admin ?
                         <>
                             <li><NavLink to="/admin/statisticsPage">Statistics</NavLink></li>
                             <li><NavLink to='/admin/addBanner'>Add Banner</NavLink></li>

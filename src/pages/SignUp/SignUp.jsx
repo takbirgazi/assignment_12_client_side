@@ -66,7 +66,7 @@ const SignUp = () => {
                     createUser(data.email, data.password)
                         .then(() => {
                             upadteUser(data.name);
-                            const addUser = { name: data.name, email: data.email, password: data.password, upazila: data.upazila, profile: res.data.data.display_url, district: data.district, blood: data.blood, status: "Active" }
+                            const addUser = { name: data.name, email: data.email, password: data.password, upazila: data.upazila, profile: res.data.data.display_url, district: data.district, blood: data.blood, status: "Active", isAdmin: false }
                             axiosPublic.post("/users", addUser)
                                 .then(res => {
                                     console.log(res);
