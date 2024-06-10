@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import TestsCard from "../Home/TestsCard/TestsCard";
+
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from './../../hooks/useAxiosPublic';
+import TestsCard from "../../components/TestsCard/TestsCard";
 
 
 const AllTests = () => {

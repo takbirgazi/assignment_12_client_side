@@ -19,6 +19,9 @@ import Reservation from "../pages/AdminDashboard/Reservation/Reservation";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AdminError from "../pages/AdminError/AdminError";
 import PrivateRoute from "./PrivateRoute";
+import TearmsAndCondation from "../pages/TearmsAndCondation/TearmsAndCondation";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -43,8 +46,20 @@ const router = createBrowserRouter([
       {
         path: "/allTests",
         element: <AllTests></AllTests>
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>
+      },
+      {
+        path: "/termsCondition",
+        element: <TearmsAndCondation></TearmsAndCondation>
       }
-    ]
+      ]
   },
   {
     path: "user",

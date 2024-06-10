@@ -6,7 +6,7 @@ import promBg from "../../assets/images/banner.jpg";
 import Recommendations from "./Recommendations/Recommendations";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import TestsCard from "./TestsCard/TestsCard";
+import TestsCard from "../../components/TestsCard/TestsCard";
 
 
 const Home = () => {
