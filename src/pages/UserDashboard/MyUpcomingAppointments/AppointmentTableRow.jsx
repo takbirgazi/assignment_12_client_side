@@ -13,14 +13,12 @@ const AppointmentTableRow = () => {
     }
   })
 
-  console.log(appiontment);
-
-  // const userBlockHndlr = (userId) => {
-  //   axiossecure.patch(`/users/update/${userId}`)
-  //     .then(() => {
-  //       refetch();
-  //     })
-  // }
+  const cancelHandler = (appnId) => {
+    axiossecure.delete(`/appointed/delete/${appnId}`)
+      .then(() => {
+        refetch();
+      })
+  }
 
   return (
     <tbody>
@@ -30,18 +28,16 @@ const AppointmentTableRow = () => {
             <div className="flex items-center gap-3">
               <div className="avatar">
                 <div className="mask mask-squircle w-12 h-12">
-                  <img src={appiontment.image} alt="Avatar Tailwind CSS Component" className="border border-yellow-500" />
+                  <img src={appn.testImg} alt="Avatar Tailwind CSS Component" className="border border-yellow-500" />
                 </div>
-              </div>
-              <div>
-                <div className="font-bold">{appn.testName}</div>
               </div>
             </div>
           </td>
-          <td>{appiontment.desc}</td>
+          <td><div className="font-bold">{appn.testName}</div></td>
+          <td>{appn.userDate}</td>
           <th>
             <div className="flex flex-col md:flex-row gap-2 items-center">
-              <button className="btn btn-ghost btn-xs bg-red-500 text-white">Cancel</button>
+              <div onClick={()=>cancelHandler(appn._id)} className="btn btn-ghost btn-xs bg-red-500 text-white">Cancel</div>
             </div>
           </th>
         </tr>)

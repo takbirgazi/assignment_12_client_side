@@ -23,6 +23,7 @@ import TearmsAndCondation from "../pages/TearmsAndCondation/TearmsAndCondation";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import CardDetails from "../components/TestsCard/CardDetails";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -100,31 +101,31 @@ const router = createBrowserRouter([
       },
       {
         path: "statisticsPage",
-        element: <StatisticsPage></StatisticsPage>
+        element: <AdminRoute><StatisticsPage></StatisticsPage></AdminRoute>
       },
       {
         path: "addBanner",
-        element: <AddBanner></AddBanner>
+        element: <AdminRoute><AddBanner></AddBanner></AdminRoute>
       },
       {
         path: "addTest",
-        element: <AddTest></AddTest>
+        element: <AdminRoute><AddTest></AddTest></AdminRoute>
       },
       {
         path: "allBanners",
-        element: <AllBanners></AllBanners>
+        element: <AdminRoute><AllBanners></AllBanners></AdminRoute>
       },
       {
         path: "adminAllTests",
-        element: <AllTestsAdmin></AllTestsAdmin>
+        element: <AdminRoute><AllTestsAdmin></AllTestsAdmin></AdminRoute>
       },
       {
         path: "allUsers",
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
         path: "reservation",
-        element: <Reservation></Reservation>
+        element: <AdminRoute><Reservation></Reservation></AdminRoute>
       }
     ]
   }
