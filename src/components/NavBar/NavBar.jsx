@@ -25,7 +25,7 @@ const NavBar = () => {
                             <li><NavLink to='/admin/addBanner'>Add Banner</NavLink></li>
                             <li><NavLink to="/admin/addTest">Add Test</NavLink></li>
                             <li><NavLink to="/admin/allBanners">All Banners</NavLink></li>
-                            <li><NavLink to="/admin/adminAllTests">All Tests</NavLink></li>
+                            <li><NavLink to="/admin/adminAllTests">My Tests</NavLink></li>
                             <li><NavLink to="/admin/reservation">Reservation</NavLink></li>
                             <li><NavLink to="/admin/allUsers">All Users</NavLink></li>
                         </>

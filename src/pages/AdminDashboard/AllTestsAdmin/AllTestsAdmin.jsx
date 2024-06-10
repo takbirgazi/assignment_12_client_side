@@ -1,19 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 import TestTableRow from "./TestTableRow";
 
 
 const AllTestsAdmin = () => {
-    const axiosSecure = useAxiosSecure();
-    const { data: allTests = [] } = useQuery({
-        queryKey: ["test"],
-        queryFn: async () => {
-            const result = await axiosSecure.get("/allTests")
-            return result?.data;
-        }
-    })
-
     return (
         <div className={`bg-white min-h-screen flex justify-center`}>
             <Helmet>
@@ -36,13 +25,7 @@ const AllTestsAdmin = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {
-                                    allTests.map(tst => <TestTableRow key={tst._id} testInfo={tst}></TestTableRow>)
-                                }
-                            </tbody>
-
-
+                            <TestTableRow></TestTableRow>
                         </table>
                     </div>
 
