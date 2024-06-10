@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 const imageBBAPIKey = import.meta.env.VITE_IMAGEBBAPI;
 const imageBBAPI = `https://api.imgbb.com/1/upload?key=${imageBBAPIKey}`;
@@ -52,6 +53,7 @@ const MyProfile = () => {
         axiossecure.patch(`/users/usrUpdate/${user.email}`,addUser)
             .then(() => {
                 refetch();
+                toast.success("Profile Update Successfully")
             })
 
 
