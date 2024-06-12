@@ -16,6 +16,7 @@ const CardDetails = () => {
     axiosSecure.get(`/allTests/bookingTest/${testId}`)
         .then(res => setTestInfo(res?.data));
 
+    const testCount = parseInt(testInfo?.testSlots);
 
     const bookHndler = (testInfo) => {
         const appointedData = {
@@ -23,12 +24,15 @@ const CardDetails = () => {
             userDate: testInfo?.testDate,
             userPrice: testInfo?.testPrice,
             testImg: testInfo?.testImage,
-            email: user.email
+            email: user.email,
+            status:"Pending"
         }
         axiosSecure.post("/appointed", appointedData)
             .then(() => {
                 toast.success("Add to Appointment");
             })
+        axiosSecure.patch(`/allTests/update/${testInfo._id}`)
+        .then(res=> console.log(res))
     }
 
     return (
@@ -41,7 +45,10 @@ const CardDetails = () => {
                 <p>Test Date: {testInfo?.testDate}</p>
                 <h2 className="font-bold text-xl">{testInfo?.testPrice} $</h2>
                 <div className="card-actions">
-                    <div onClick={() => bookHndler(testInfo)} className="btn btn-primary">Book Now</div>
+                    {
+                        testCount > 0 ? <div onClick={() => bookHndler(testInfo)} className="btn btn-primary">Book Now</div> : <div className="font-bold text-red-400">Stock Out</div>
+                    }
+                    
                 </div>
             </div>
         </div>

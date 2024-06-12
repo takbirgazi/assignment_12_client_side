@@ -1,4 +1,5 @@
 
+import { NavLink } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
@@ -37,9 +38,8 @@ const TestTableRow = () => {
                         {tests.testDate}
                     </td>
                     <th>
-                        <button className="btn btn-ghost btn-xs">Update</button>
+                        <NavLink to={`/admin/adminAllTests/update/${tests._id}`} className="btn btn-ghost btn-xs">Update</NavLink>
                         <div onClick={()=>deleteTests(tests._id)} className="btn btn-ghost btn-xs">Delete</div>
-                        <button className="btn btn-ghost btn-xs">Reservations</button>
                     </th>
                 </tr>)
             }

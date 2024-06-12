@@ -24,6 +24,8 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import CardDetails from "../components/TestsCard/CardDetails";
 import AdminRoute from "./AdminRoute";
+import EditTests from "../pages/AdminDashboard/AddTest/EditTests";
+import AddTestReport from "../pages/AdminDashboard/Reservation/AddTestReport";
 
 
 
@@ -118,6 +120,14 @@ const router = createBrowserRouter([
       {
         path: "adminAllTests",
         element: <AdminRoute><AllTestsAdmin></AllTestsAdmin></AdminRoute>
+      },
+      {
+        path: `adminAllTests/update/:id`,
+        element: <AdminRoute><EditTests></EditTests></AdminRoute>
+      },
+      {
+        path: `testReport/update/:id`,
+        element: <AdminRoute><AddTestReport></AddTestReport></AdminRoute>
       },
       {
         path: "allUsers",

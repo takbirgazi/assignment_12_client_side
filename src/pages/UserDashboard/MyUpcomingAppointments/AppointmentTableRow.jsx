@@ -35,6 +35,7 @@ const AppointmentTableRow = () => {
           </td>
           <td><div className="font-bold">{appn.testName}</div></td>
           <td>{appn.userDate}</td>
+          <td>{appn.status}</td>
           <th>
             <div className="flex flex-col md:flex-row gap-2 items-center">
               <div onClick={()=>cancelHandler(appn._id)} className="btn btn-ghost btn-xs bg-red-500 text-white">Cancel</div>

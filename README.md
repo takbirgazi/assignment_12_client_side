@@ -41,3 +41,4 @@
 * react-hook-form
 * react-datepicker
 * jspdf
+* recharts

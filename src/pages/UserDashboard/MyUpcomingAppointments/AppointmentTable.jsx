@@ -12,6 +12,7 @@ const AppointmentTable = () => {
               <th>Test Image</th>
               <th>Test Name</th>
               <th>Appointment Date</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
