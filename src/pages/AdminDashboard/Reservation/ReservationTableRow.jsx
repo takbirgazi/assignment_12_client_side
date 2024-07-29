@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 const ReservationTableRow = ({ searchData }) => {
     console.log(searchData);
@@ -61,3 +62,7 @@ const ReservationTableRow = ({ searchData }) => {
 };
 
 export default ReservationTableRow;
+
+ReservationTableRow.propTypes = {
+    searchData: PropTypes.string
+}
